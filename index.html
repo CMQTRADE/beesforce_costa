@@ -4,33 +4,26 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Tareas CDV</title>
+    <title>Dashboard Validación Trade</title>
 
     <!-- Bootstrap -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Fuente -->
-
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- SheetJS -->
-
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
-    <!-- ChartJS -->
-
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -39,9 +32,9 @@
 
 <div class="container-fluid p-4">
 
-    <!-- =====================================================
-        HEADER
-    ====================================================== -->
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
 
     <header class="topbar">
 
@@ -69,127 +62,89 @@
 
     </header>
 
-    <!-- =====================================================
-        FILTROS
-    ====================================================== -->
+    <!-- ===================================================== -->
+    <!-- FILTROS -->
+    <!-- ===================================================== -->
 
     <section class="filters">
 
         <select id="negocioFilter" class="form-select">
 
-            <option value="Todos">
-
-                Todos los negocios
-
-            </option>
-
-            <option value="CZA">
-
-                CZA
-
-            </option>
-
-            <option value="Beyond">
-
-                Beyond
-
-            </option>
+            <option value="">Todos los Negocios</option>
 
         </select>
 
         <select id="supervisorFilter" class="form-select">
 
-            <option value="">
-
-                Todos los Supervisores
-
-            </option>
+            <option value="">Todos los Supervisores</option>
 
         </select>
 
         <select id="distribuidorFilter" class="form-select">
 
-            <option value="">
+            <option value="">Todos los Distribuidores</option>
 
-                Todos los Distribuidores
+        </select>
 
-            </option>
+        <select id="promotorFilter" class="form-select">
+
+            <option value="">Todos los Promotores</option>
 
         </select>
 
     </section>
 
-    <!-- =====================================================
-        KPI
-    ====================================================== -->
+    <!-- ===================================================== -->
+    <!-- KPIs -->
+    <!-- ===================================================== -->
 
     <section class="row mt-4 g-4">
 
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-3 col-md-6">
 
             <div class="kpi-card" id="kpiValidacion">
 
                 <h6>% Validación</h6>
 
-                <h2 id="validacionGeneral">
-
-                    0%
-
-                </h2>
+                <h2 id="validacionGeneral">0%</h2>
 
             </div>
 
         </div>
 
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-3 col-md-6">
 
             <div class="kpi-card">
 
                 <h6>Tareas Enviadas</h6>
 
-                <h2 id="tareasEnviadas">
-
-                    0
-
-                </h2>
+                <h2 id="tareasEnviadas">0</h2>
 
             </div>
 
         </div>
 
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-3 col-md-6">
 
             <div class="kpi-card">
 
                 <h6>Tareas Validadas</h6>
 
-                <h2 id="tareasValidadas">
-
-                    0
-
-                </h2>
+                <h2 id="tareasValidadas">0</h2>
 
             </div>
 
         </div>
 
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-3 col-md-6">
 
             <div class="kpi-card" id="objetivoCard">
 
                 <h6>Objetivo</h6>
 
-                <h2>
+                <h2>46%</h2>
 
-                    46%
-
-                </h2>
-
-                <small id="objetivoDiff">
-
-                    --
-
-                </small>
+                <small id="objetivoDiff">--</small>
 
             </div>
 
@@ -197,25 +152,21 @@
 
     </section>
 
-    <!-- =====================================================
-        RANKING
-    ====================================================== -->
+    <!-- ===================================================== -->
+    <!-- RANKING -->
+    <!-- ===================================================== -->
 
     <section class="row mt-4">
 
-        <div class="col-lg-12">
+        <div class="col-12">
 
             <div class="panel">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>
 
-                    <h5 class="mb-0">
+                    Ranking de Distribuidores
 
-                        Ranking de Distribuidores
-
-                    </h5>
-
-                </div>
+                </h5>
 
                 <canvas id="rankingDistribuidores"></canvas>
 
@@ -225,9 +176,9 @@
 
     </section>
 
-    <!-- =====================================================
-        SUPERVISORES / PROMOTORES
-    ====================================================== -->
+    <!-- ===================================================== -->
+    <!-- SUPERVISORES -->
+    <!-- ===================================================== -->
 
     <section class="row mt-4">
 
@@ -241,9 +192,7 @@
 
                 </h5>
 
-                <div id="supervisoresContainer">
-
-                </div>
+                <div id="supervisoresContainer"></div>
 
             </div>
 
@@ -259,9 +208,7 @@
 
                 </h5>
 
-                <div id="promotoresContainer">
-
-                </div>
+                <div id="promotoresContainer"></div>
 
             </div>
 
@@ -269,9 +216,9 @@
 
     </section>
 
-    <!-- =====================================================
-        DETALLE TAREAS
-    ====================================================== -->
+    <!-- ===================================================== -->
+    <!-- TABLA -->
+    <!-- ===================================================== -->
 
     <section class="row mt-4">
 
@@ -321,9 +268,9 @@
 
 </div>
 
-<!-- =====================================================
-    JAVASCRIPT
-====================================================== -->
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
 
 <script src="js/config.js"></script>
 
