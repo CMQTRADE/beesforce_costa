@@ -2,36 +2,46 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard Validación Trade</title>
 
     <!-- Bootstrap -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Google Font -->
+    <!-- Fuente -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
+
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- SheetJS -->
+
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
     <!-- ChartJS -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid p-4">
 
-    <!-- HEADER -->
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
 
     <header class="topbar">
 
@@ -40,7 +50,9 @@
             <h2>Dashboard Validación Trade</h2>
 
             <small id="fechaCarga">
+
                 Sin archivo cargado
+
             </small>
 
         </div>
@@ -48,8 +60,8 @@
         <div class="acciones">
 
             <input
-                type="file"
                 id="excelFile"
+                type="file"
                 accept=".xlsx,.xls"
                 class="form-control">
 
@@ -57,80 +69,120 @@
 
     </header>
 
-    <!-- FILTROS -->
+    <!-- =====================================================
+        FILTROS
+    ====================================================== -->
 
     <section class="filters">
 
         <select id="negocioFilter" class="form-select">
-            <option value="Todos">Todos los negocios</option>
-            <option value="CZA">CZA</option>
-            <option value="Beyond">Beyond</option>
+
+            <option value="Todos">
+
+                Todos los negocios
+
+            </option>
+
+            <option value="CZA">
+
+                CZA
+
+            </option>
+
+            <option value="Beyond">
+
+                Beyond
+
+            </option>
+
         </select>
 
         <select id="supervisorFilter" class="form-select">
-            <option value="">Todos los Supervisores</option>
+
+            <option value="">
+
+                Todos los Supervisores
+
+            </option>
+
         </select>
 
         <select id="distribuidorFilter" class="form-select">
-            <option value="">Todos los Distribuidores</option>
+
+            <option value="">
+
+                Todos los Distribuidores
+
+            </option>
+
         </select>
 
     </section>
 
-    <!-- KPI -->
+    <!-- =====================================================
+        KPI
+    ====================================================== -->
 
     <section class="row mt-4 g-4">
 
-        <div class="col-lg-3">
+        <div class="col-xl-3 col-lg-6">
 
             <div class="kpi-card" id="kpiValidacion">
 
                 <h6>% Validación</h6>
 
                 <h2 id="validacionGeneral">
+
                     0%
+
                 </h2>
 
             </div>
 
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-xl-3 col-lg-6">
 
             <div class="kpi-card">
 
                 <h6>Tareas Enviadas</h6>
 
                 <h2 id="tareasEnviadas">
+
                     0
+
                 </h2>
 
             </div>
 
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-xl-3 col-lg-6">
 
             <div class="kpi-card">
 
                 <h6>Tareas Validadas</h6>
 
                 <h2 id="tareasValidadas">
+
                     0
+
                 </h2>
 
             </div>
 
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-xl-3 col-lg-6">
 
             <div class="kpi-card" id="objetivoCard">
 
                 <h6>Objetivo</h6>
 
                 <h2>
+
                     46%
+
                 </h2>
 
                 <small id="objetivoDiff">
@@ -145,15 +197,25 @@
 
     </section>
 
-    <!-- GRAFICOS -->
+    <!-- =====================================================
+        RANKING
+    ====================================================== -->
 
     <section class="row mt-4">
 
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
             <div class="panel">
 
-                <h5>Ranking Distribuidores</h5>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h5 class="mb-0">
+
+                        Ranking de Distribuidores
+
+                    </h5>
+
+                </div>
 
                 <canvas id="rankingDistribuidores"></canvas>
 
@@ -161,21 +223,11 @@
 
         </div>
 
-        <div class="col-lg-4">
-
-            <div class="panel">
-
-                <h5>Distribución por Negocio</h5>
-
-                <canvas id="negocioChart"></canvas>
-
-            </div>
-
-        </div>
-
     </section>
 
-    <!-- SUPERVISORES -->
+    <!-- =====================================================
+        SUPERVISORES / PROMOTORES
+    ====================================================== -->
 
     <section class="row mt-4">
 
@@ -183,7 +235,11 @@
 
             <div class="panel">
 
-                <h5>Supervisores</h5>
+                <h5>
+
+                    Supervisores
+
+                </h5>
 
                 <div id="supervisoresContainer">
 
@@ -197,7 +253,11 @@
 
             <div class="panel">
 
-                <h5>Promotores</h5>
+                <h5>
+
+                    Promotores
+
+                </h5>
 
                 <div id="promotoresContainer">
 
@@ -209,7 +269,9 @@
 
     </section>
 
-    <!-- DETALLE -->
+    <!-- =====================================================
+        DETALLE TAREAS
+    ====================================================== -->
 
     <section class="row mt-4">
 
@@ -217,31 +279,39 @@
 
             <div class="panel">
 
-                <h5>Detalle de Validación por Tarea</h5>
+                <h5>
 
-                <table class="table table-hover">
+                    Validación por Tarea
 
-                    <thead>
+                </h5>
 
-                        <tr>
+                <div class="table-responsive">
 
-                            <th>Tarea</th>
+                    <table class="table table-hover">
 
-                            <th>Enviadas</th>
+                        <thead>
 
-                            <th>Validadas</th>
+                            <tr>
 
-                            <th>%</th>
+                                <th>Tarea</th>
 
-                        </tr>
+                                <th>Enviadas</th>
 
-                    </thead>
+                                <th>Validadas</th>
 
-                    <tbody id="tablaTareas">
+                                <th>% Validación</th>
 
-                    </tbody>
+                            </tr>
 
-                </table>
+                        </thead>
+
+                        <tbody id="tablaTareas">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
 
             </div>
 
@@ -251,7 +321,11 @@
 
 </div>
 
-<!-- JS -->
+<!-- =====================================================
+    JAVASCRIPT
+====================================================== -->
+
+<script src="js/config.js"></script>
 
 <script src="js/utils.js"></script>
 
